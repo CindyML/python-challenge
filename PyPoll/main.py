@@ -1,5 +1,6 @@
 import os
 import csv
+import subprocess
 
 election_data = os.path.join("..", "PyPoll", "Resources", "election_data.csv")
 
@@ -55,16 +56,66 @@ print("---------------------------")
 print()
 values = [Candidate1_percent, Candidate2_percent, Candidate3_percent]
 Largest_value = max(values)
-if Largest_value == Candidate1_percent:
-    print("Winner:", (Candidate1))
+if Largest_value == Candidate1_percent: 
+    winner = Candidate1
+    #print("Winner:", (Candidate1))
 elif Largest_value == Candidate2_percent:
-    print("Winner:", (Candidate2))
+    winner = Candidate2
+    #print("Winner:", (Candidate2))
 elif Largest_value == Candidate3_percent:
-    print("Winner:", (Candidate3))
+    winner = Candidate3
+    #print("Winner:", (Candidate3))
 else: 0
+print("Winner", winner)
 print()
 print("---------------------------")
 
-file_name = "PyPoll_Results(code).txt"
-open(file_name, "w")
+#file_name = "PyPoll_Results(code).txt"
+#open(file_name, "w")
 
+#input_file = (C:/Users/cynth/Python-challenge/PyPoll/main.py)
+input_file_path = ("C:", "Users", "cynth", "Python-challenge", "PyPoll", "main.py")
+#output_file = (C:/Users/cynth/Python-challenge/PyPoll/PyPoll_Results(code).txt)
+output_file_path = ("C:", "Users", "cynth", "Python-challenge", "PyPoll", "PyPoll_Results(code).txt")
+
+input_file_path = '/'.join(input_file_path)
+output_file_path = '/'.join(output_file_path)
+
+
+#with open(input_file_path, 'r') as input_file:
+    #code = input_file.read()
+
+#with open(output_file_path, 'w') as output_file:
+    #output_file.write(code)
+
+#print_code_to_file(input_file, output_file)
+
+with open(output_file_path, 'w') as output_file:
+    output = (f"Election Results\n"
+              f"\n"
+              f"---------------------------\n"
+              f"\n"
+              f"Total Votes: {row_count}\n"
+              f"\n"
+              f"---------------------------\n" 
+              f"\n"
+              f"Charles Caspter Stockham: {formatted_percentage1}, {str(row_count1)}\n"
+              f"\n"
+              f"Diana DeGette: {formatted_percentage2}, {str(row_count2)}\n"
+              f"\n"
+              f"Raymon Anthony Doane: {formatted_percentage3}, {str(row_count3)}\n"
+              f"\n"
+              f"---------------------------\n"
+              f"\n"
+              f"Winner: {winner}\n"
+              f"\n"
+              f"---------------------------")
+              
+    
+    output_file.write(output)
+    #subprocess.run(["python", input_file_path], stdout=output_file, text=True)  
+    # Redirect output to file
+#import sys
+#sys.stderr = output_file
+
+#print(f"Script results saved to: {output_file_path}", flush=True)
