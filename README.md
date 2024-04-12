@@ -4,6 +4,7 @@ My originally submitted assignment was marked incomplete.
 However my repo is and was public.
 And the link provided was copied straight from github.
 Please help me further understand why it could not be accessed.
+Screenshots of the git link and public status have been provided.
 Thank you.
 
 
